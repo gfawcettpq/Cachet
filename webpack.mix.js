@@ -23,8 +23,11 @@ mix
         'resources/assets/sass/plugins/_github-markdown.scss'
     )
     .copyDirectory('node_modules/ionicons/fonts', 'public/fonts')
+    .copyDirectory('resources/assets/uxkit/fonts', 'public/dist/fonts')
+    .copyDirectory('resources/assets/uxkit/images', 'public/dist/images')
     .sass('resources/assets/sass/dashboard.scss', 'public/dist/css/dashboard')
     .sass('resources/assets/sass/app.scss', 'public/dist/css')
+    .less('resources/assets/uxkit/less/uxframework-blue.less', 'public/dist/css')
     .purgeCss()
     .options({
         processCssUrls: false

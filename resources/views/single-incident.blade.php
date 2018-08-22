@@ -7,11 +7,11 @@
 @section('bodyClass', 'no-padding')
 
 @section('outer-content')
-@include('partials.nav')
 @stop
 
 @section('content')
-<h1>{{ $incident->name }} <small>{{ $incident->occurred_at_formatted }}</small></h1>
+<h1>{{ $incident->name }} <br/></h1>
+<h4>{{ $incident->occurred_at_formatted }}</h4>
 
 <hr>
 

@@ -32,6 +32,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset={{ $fontSubset }}" rel="stylesheet" type="text/css">
     @endif
     <link rel="stylesheet" href="{{ mix('dist/css/dashboard/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ mix('dist/css/uxframework-blue.css') }}">
     @yield('css')
 
     @include('partials.crowdin')

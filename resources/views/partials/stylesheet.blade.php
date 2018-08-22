@@ -29,7 +29,6 @@ p, strong { color: {{ $themeTextColor }} !important; }
 
 /**
  * Alert overrides.
- */
 .alert {
     background-color: {{ $themeYellows }};
     border-color: {{ color_darken($themeYellows, -0.1) }};
@@ -50,6 +49,7 @@ p, strong { color: {{ $themeTextColor }} !important; }
     border-color: {{ color_darken($themeReds, -0.1) }};
     color: {{ color_contrast($themeReds) }};
 }
+ */
 
 /**
  * Button Overrides

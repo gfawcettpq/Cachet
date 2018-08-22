@@ -50,8 +50,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset={{ $fontSubset }}" rel="stylesheet" type="text/css">
     @endif
     <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('dist/css/uxframework-blue.css') }}">
 
+    <!--
     @include('partials.stylesheet')
+    -->
 
     @include('partials.crowdin')
 
@@ -79,6 +82,8 @@
     <script src="{{ mix('dist/js/vendor.js') }}"></script>
 </head>
 <body class="status-page @yield('bodyClass')">
+    @include('partials.navbar')
+
     @yield('outer-content')
 
     @include('partials.banner')

@@ -1,15 +1,10 @@
 @extends('layout.master')
 
-@section('title',  trans('cachet.subscriber.subscribe'). " | ". $siteTitle))
+@section('title',  ('cachet.subscriber.subscribe'). " | ". $siteTitle)
 
 @section('description', trans('cachet.meta.description.subscribe', ['app' => $siteTitle]))
 
 @section('content')
-<div class="pull-right">
-    <p><a class="btn btn-success btn-outline" href="{{ cachet_route('status-page') }}"><i class="ion ion-home"></i></a></p>
-</div>
-
-<div class="clearfix"></div>
 
 @include('partials.errors')
 
@@ -17,13 +12,24 @@
     <div class="col-xs-12 col-lg-offset-2 col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">{{ trans('cachet.subscriber.subscribe') }}</div>
+
             <div class="panel-body">
-                <form action="{{ cachet_route('subscribe', [], 'post') }}" method="POST" class="form">
+                <form class="form-horizonal" action="{{ cachet_route('subscribe', [], 'post') }}" method="POST" role="form">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                     <div class="form-group">
-                        <input class="form-control" type="email" name="email" placeholder="email@example.com">
+                      <label class="col-xs-12 col-lg-2 control-label" for="subscriberEmail">Email</label>
+
+                      <div class="col-xs-12 col-lg-10">
+                        <input class="form-control" type="email" id="subscriberEmail" name="email" placeholder="you@example.com">
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn-success">{{ trans('cachet.subscriber.button') }}</button>
+
+                    <div class="form-group">
+                      <div class="col-xs-12 col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-success">{{ trans('cachet.subscriber.button') }}</button>
+                      </div>
+                    </div>
                 </form>
             </div>
         </div>
