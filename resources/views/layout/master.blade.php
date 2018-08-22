@@ -52,9 +52,6 @@
     <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('dist/css/uxframework-blue.css') }}">
 
-    <!--
-    @include('partials.stylesheet')
-    -->
 
     @include('partials.crowdin')
 
