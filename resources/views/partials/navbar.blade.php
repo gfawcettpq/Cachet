@@ -11,7 +11,7 @@
       <li>
         <div class="navbar-brand product-name">
           <div class="pq-logo"></div>
-          <a href="#">Status Page</a></div>
+          <a href="/">Status Page</a></div>
       </li>
     </ul>
   </div>
