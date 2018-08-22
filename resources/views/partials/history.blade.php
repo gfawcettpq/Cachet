@@ -28,7 +28,7 @@
           <td><span aria-hidden="true" class="uxf-icon uxf-thumbs-up all-clear" data-toggle="tooltip" data-title="No Reported Incidents"></span>
         </tr>
         <tr>
-          <td>Onesearch</td>
+          <td>OneSearch</td>
           <td><span aria-hidden="true" class="uxf-icon uxf-thumbs-up all-clear" data-toggle="tooltip" data-title="No Reported Incidents"></span>
           <td><span aria-hidden="true" class="uxf-icon uxf-thumbs-up all-clear" data-toggle="tooltip" data-title="No Reported Incidents"></span>
           <td><span aria-hidden="true" class="uxf-icon uxf-thumbs-up all-clear" data-toggle="tooltip" data-title="No Reported Incidents"></span>
