@@ -135,6 +135,16 @@ class Component extends Model implements HasPresenter
     }
 
     /**
+     * Get the history relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function history()
+    {
+      return $this->hasMany(ComponentHistory::class);
+    }
+
+    /**
      * Get the meta relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany

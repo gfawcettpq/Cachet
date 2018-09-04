@@ -19,18 +19,19 @@
   <nav class="collapse navbar-collapse bs-navbar-collapse" id="main-menu" role="navigation">
     <div class="nav navbar-nav navbar-below">
       <ul class="nav navbar-nav">
-        @if($enableSubscribers && Route::currentRouteNamed('core::get:status-page'))
+        <li>
+          <a class="btn btn-link" href="/" shape="rect" title="">Status Page</a>
+        </li>
+        <li>
+          <a class="btn btn-link" href="{{ cachet_route('incidents') }}" shape="rect" title="Incidents">Incidents</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        @if($enableSubscribers && Request::is('/'))
         <li>
           <a class="btn btn-link" href="{{ cachet_route('subscribe') }}" shape="rect" title="Subscribe">{{ trans('cachet.subscriber.button') }}</a>
         </li>
         @endif
-        @if(Route::currentRouteNamed('core::get:subscribe') || Route::currentRouteNamed('core::get:incident'))
-        <li>
-          <a class="btn btn-link" href="/" shape="rect" title="">Status Page</a>
-        </li>
-        @endif
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
         <li>
           <a class="btn btn-link" href="{{ cachet_route('feed.rss') }}" shape="rect" title="RSS">{{ trans('cachet.rss-feed') }}</a>
         </li>

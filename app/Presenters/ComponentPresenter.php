@@ -13,7 +13,10 @@ namespace CachetHQ\Cachet\Presenters;
 
 use CachetHQ\Cachet\Presenters\Traits\TimestampsTrait;
 use CachetHQ\Cachet\Services\Dates\DateFactory;
+use CachetHQ\Cachet\Models\ComponentHistory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Facades\Log;
 use McCool\LaravelAutoPresenter\BasePresenter;
 
 class ComponentPresenter extends BasePresenter implements Arrayable
@@ -34,6 +37,65 @@ class ComponentPresenter extends BasePresenter implements Arrayable
             case 3: return 'yellows';
             case 4: return 'reds';
         }
+    }
+
+    /**
+     * Returns a collection of histories
+     *
+     */
+    public function display_histories()
+    {
+      $m = date("m");
+      $de = date("d");
+      $y = date("Y");
+
+      $histories = array();
+
+      for ($i=0; $i<7; $i++) {
+        $date = date(mktime(0, 0, 0, $m, ($de - $i), $y));
+
+        $component = $this;
+
+        $status = $this->history()
+          ->whereDate('created_at', '=', date('Y-m-d', $date))
+          ->max('new_status');
+
+        // set status to operational of no status change found
+        $status = isset($status) ? $status : 1;
+
+        switch($status) {
+        case 1:
+          $icon = 'uxf-thumbs-up';
+          $status = 'all-clear';
+          $tooltip = 'No Incidents Reported';
+          break;
+        case 2:
+          $icon = 'uxf-thumbs-down';
+          $status = 'minor-incident';
+          $tooltip = 'Performance Issues Reported';
+          break;
+        case 3:
+          $icon = 'uxf-attention';
+          $status = 'minor-incident';
+          $tooltip = 'Partial Outage Reported';
+          break;
+        case 4:
+          $icon = 'uxf-close';
+          $status = 'major-incident';
+          $tooltip = 'Major Outage Reported';
+          break;
+        }
+
+        $histories[] = array(
+          "icon" => $icon,
+          "status" => $status,
+          "tooltip" => $tooltip,
+          "date" => date('Y-m-d', $date),
+          "componentName" => $component->name
+        );
+      }
+
+      return $histories;
     }
 
     /**

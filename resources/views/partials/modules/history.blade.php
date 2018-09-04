@@ -1,3 +1,3 @@
 <div class="section-message">
-  @include('partials.history')
+  @include('partials.components_history')
 </div>

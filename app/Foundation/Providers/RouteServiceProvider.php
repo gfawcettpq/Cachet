@@ -85,6 +85,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $router->model('component', 'CachetHQ\Cachet\Models\Component');
         $router->model('component_group', 'CachetHQ\Cachet\Models\ComponentGroup');
+        $router->model('component_history', 'CachetHQ\Cachet\Models\ComponentHistory');
         $router->model('incident', 'CachetHQ\Cachet\Models\Incident');
         $router->model('incident_template', 'CachetHQ\Cachet\Models\IncidentTemplate');
         $router->model('incident_update', 'CachetHQ\Cachet\Models\IncidentUpdate');

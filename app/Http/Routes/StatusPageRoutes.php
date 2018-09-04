@@ -42,6 +42,16 @@ class StatusPageRoutes
             $router->get('/', [
                 'as'   => 'get:status-page',
                 'uses' => 'StatusPageController@showIndex',
+              ]);
+
+            $router ->get('/incidents', [
+              'as' => 'get:incidents',
+              'uses' => 'StatusPageController@showIncidents',
+            ]);
+
+            $router ->post('/incidents', [
+              'as' => 'post:incidents',
+              'uses' => 'StatusPageController@showIncidents',
             ]);
 
             $router->get('incidents/{incident}', [

@@ -14,6 +14,7 @@ namespace CachetHQ\Cachet\Bus\Events\Component;
 use CachetHQ\Cachet\Bus\Events\ActionInterface;
 use CachetHQ\Cachet\Models\Component;
 use CachetHQ\Cachet\Models\User;
+use Illuminate\Support\Facades\Log;
 
 /**
  * This is the component status was changed event.
@@ -75,6 +76,8 @@ final class ComponentStatusWasChangedEvent implements ActionInterface, Component
         $this->original_status = $original_status;
         $this->new_status = $new_status;
         $this->silent = $silent;
+
+        Log::debug("created new ComponentStatusWasChangedEvent");
     }
 
     /**

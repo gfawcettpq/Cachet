@@ -19,6 +19,7 @@ use GrahamCampbell\Binput\Facades\Binput;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class IncidentController extends AbstractApiController
@@ -97,6 +98,9 @@ class IncidentController extends AbstractApiController
      */
     public function update(Incident $incident)
     {
+        Log::debug(gettype(Binput::get('notify')));
+        Log::debug("controller notify: " . Binput::get('notify'));
+
         try {
             $incident = execute(new UpdateIncidentCommand(
                 $incident,

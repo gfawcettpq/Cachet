@@ -12,6 +12,7 @@
 namespace CachetHQ\Cachet\Bus\Commands\Incident;
 
 use CachetHQ\Cachet\Models\Incident;
+use Illuminate\Support\Facades\Log;
 
 /**
  * This is the update incident command.
@@ -144,6 +145,10 @@ final class UpdateIncidentCommand
      */
     public function __construct(Incident $incident, $name, $status, $message, $visible, $component_id, $component_status, $notify, $stickied, $occurred_at, $template, array $template_vars = [])
     {
+      Log::debug(gettype($notify));
+
+        Log::debug("command notify: " . $notify);
+
         $this->incident = $incident;
         $this->name = $name;
         $this->status = $status;

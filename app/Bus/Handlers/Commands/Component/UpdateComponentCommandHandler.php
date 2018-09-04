@@ -16,6 +16,7 @@ use CachetHQ\Cachet\Bus\Events\Component\ComponentStatusWasChangedEvent;
 use CachetHQ\Cachet\Bus\Events\Component\ComponentWasUpdatedEvent;
 use CachetHQ\Cachet\Models\Component;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Log;
 
 class UpdateComponentCommandHandler
 {
@@ -49,6 +50,10 @@ class UpdateComponentCommandHandler
     {
         $component = $command->component;
         $originalStatus = $component->status;
+
+        Log::debug('handling UpdateComponentCommand');
+        Log::debug('status: ' . $command->status . ' originalStatus: ' . $originalStatus);
+
 
         if ($command->status && (int) $originalStatus !== (int) $command->status) {
             event(new ComponentStatusWasChangedEvent($this->auth->user(), $component, $originalStatus, $command->status, $command->silent));

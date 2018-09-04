@@ -20,6 +20,7 @@ use CachetHQ\Cachet\Models\Incident;
 use CachetHQ\Cachet\Models\IncidentTemplate;
 use CachetHQ\Cachet\Services\Dates\DateFactory;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Log;
 use Twig_Environment;
 use Twig_Loader_Array;
 
@@ -67,6 +68,8 @@ class UpdateIncidentCommandHandler
      */
     public function handle(UpdateIncidentCommand $command)
     {
+      Log::debug("handler notify: " . $command->incident->notify);
+
         if ($template = IncidentTemplate::where('slug', '=', $command->template)->first()) {
             $command->message = $this->parseTemplate($template, $command);
         }

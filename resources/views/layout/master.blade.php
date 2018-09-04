@@ -25,9 +25,6 @@
     <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
     <meta http-equiv="cleartype" content="on">
 
-    <meta name="msapplication-TileColor" content="{{ $themeGreens }}" />
-    <meta name="msapplication-TileImage" content="{{ asset('/img/favicon.png') }}" />
-
     @if (isset($favicon))
     <link rel="icon" href="{{ asset("/img/{$favicon}.ico") }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset("/img/{$favicon}.png") }}" type="image/png">

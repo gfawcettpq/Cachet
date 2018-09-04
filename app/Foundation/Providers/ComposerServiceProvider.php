@@ -13,6 +13,7 @@ namespace CachetHQ\Cachet\Foundation\Providers;
 
 use CachetHQ\Cachet\Composers\AppComposer;
 use CachetHQ\Cachet\Composers\ComponentsComposer;
+use CachetHQ\Cachet\Composers\ComponentHistoryComposer;
 use CachetHQ\Cachet\Composers\CurrentUserComposer;
 use CachetHQ\Cachet\Composers\DashboardComposer;
 use CachetHQ\Cachet\Composers\MetricsComposer;
@@ -42,6 +43,7 @@ class ComposerServiceProvider extends ServiceProvider
         $factory->composer(['setup.*', 'dashboard.settings.localization'], TimezoneLocaleComposer::class);
 
         $factory->composer('partials.modules.components', ComponentsComposer::class);
+        $factory->composer('partials.modules.history', ComponentHistoryComposer::class);
         $factory->composer('partials.modules.metrics', MetricsComposer::class);
         $factory->composer('partials.modules.stickied', StickiedComposer::class);
         $factory->composer('partials.modules.scheduled', ScheduledComposer::class);

@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
 use McCool\LaravelAutoPresenter\Facades\AutoPresenter;
 
@@ -128,6 +130,92 @@ class StatusPageController extends AbstractApiController
             ->withCanPageBackward($canPageBackward)
             ->withPreviousDate($previousDate)
             ->withNextDate($nextDate);
+    }
+
+    /**
+     * Shows the incident timeline
+     */
+    public function showIncidents()
+    {
+      $componentName = Binput::get('componentName');
+
+      $startDateInput = Binput::get('start_date');
+      $endDateInput = Binput::get('end_date');
+
+      $startDate = null;
+      $endDate = null;
+
+      $appIncidentDays = null;
+      $allIncidentDays = null;
+      $canPageForward = false;
+      $canPageBackward = false;
+      $previousDate = null;
+      $nextDate = null;
+
+      if (isset($startDateInput)) {
+        $startDate = Date::createFromFormat('Y-m-d', $startDateInput);
+      }
+
+      if (isset($endDateInput)) {
+        $endDate = Date::createFromFormat('Y-m-d', $endDateInput);
+      }
+
+      Log::debug("component name: " . $componentName);
+      Log::debug("start date: " . $startDate);
+      Log::debug("end date: " . $endDate);
+
+      if (isset($componentName)) {
+        $component = Component::where('name', $componentName)->first();
+      }
+
+      if (isset($component)) {
+        if (isset($startDate) && isset($endDate)) {
+          $allIncidents = Incident::where('visible', '>=', (int) !Auth::check())
+            ->whereBetween('occurred_at', [
+              $endDate->format('Y-m-d').' 00:00:00',
+              $startDate->format('Y-m-d').' 23:59:59',
+            ])
+            ->where('component_id', $component->id)
+            ->orderBy('occurred_at', 'desc')->get()->groupBy(function (Incident $incident) {
+              return app(DateFactory::class)->make($incident->occurred_at)->toDateString();
+            });
+        } else {
+          $allIncidents = Incident::where('visible', '>=', (int) !Auth::check())
+            ->where('component_id', $component->id)
+            ->orderBy('occurred_at', 'desc')->get()->groupBy(function (Incident $incident) {
+              return app(DateFactory::class)->make($incident->occurred_at)->toDateString();
+            });
+        }
+      } else {
+        if (isset($startDate) && isset($endDate)) {
+          $allIncidents = Incident::where('visible', '>=', (int) !Auth::check())
+            ->whereBetween('occurred_at', [
+              $endDate->format('Y-m-d').' 00:00:00',
+              $startDate->format('Y-m-d').' 23:59:59',
+            ])
+            ->orderBy('occurred_at', 'desc')->get()->groupBy(function (Incident $incident) {
+              return app(DateFactory::class)->make($incident->occurred_at)->toDateString();
+          });
+        } else {
+          $allIncidents = Incident::where('visible', '>=', (int) !Auth::check())
+            ->orderBy('occurred_at', 'desc')->get()->groupBy(function (Incident $incident) {
+              return app(DateFactory::class)->make($incident->occurred_at)->toDateString();
+          });
+        }
+      }
+
+    // Get a list of components for the component drop down
+      $components = Component::where('enabled', 1)->orderBy('name')->get();
+
+      return View::make('incidents')
+        ->withDaysToShow($appIncidentDays)
+        ->withAllIncidents($allIncidents)
+        ->withCanPageForward($canPageForward)
+        ->withCanPageBackward($canPageBackward)
+        ->withPreviousDate($previousDate)
+        ->withNextDate($nextDate)
+        ->withComponents($components)
+        ->withComponentName($componentName);
     }
 
     /**

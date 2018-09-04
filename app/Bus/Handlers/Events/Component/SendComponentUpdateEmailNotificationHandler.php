@@ -16,6 +16,7 @@ use CachetHQ\Cachet\Integrations\Contracts\System;
 use CachetHQ\Cachet\Models\Component;
 use CachetHQ\Cachet\Models\Subscriber;
 use CachetHQ\Cachet\Notifications\Component\ComponentStatusChangedNotification;
+use Illuminate\Support\Facades\Log;
 
 class SendComponentUpdateEmailNotificationHandler
 {
@@ -55,6 +56,8 @@ class SendComponentUpdateEmailNotificationHandler
      */
     public function handle(ComponentStatusWasChangedEvent $event)
     {
+        Log::debug('running SendComponentUpdateEmailNotificationHandler');
+
         $component = $event->component;
 
         // If we're silent or the notifications are suppressed don't send this.

@@ -60,6 +60,6 @@ trait TimestampsTrait
      */
     protected function incidentDateFormat()
     {
-        return Config::get('setting.incident_date_format', 'l jS F Y H:i:s');
+        return Config::get('setting.incident_date_format', 'Y/m/d H:i:s');
     }
 }

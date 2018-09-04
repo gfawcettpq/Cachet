@@ -12,6 +12,7 @@
 namespace CachetHQ\Cachet\Bus\Commands\Component;
 
 use CachetHQ\Cachet\Models\Component;
+use Illuminate\Support\Facades\Log;
 
 final class UpdateComponentCommand
 {
@@ -130,5 +131,7 @@ final class UpdateComponentCommand
         $this->enabled = $enabled;
         $this->meta = $meta;
         $this->silent = $silent;
+
+        Log::debug('created new UpdateComponentCommand');
     }
 }
