@@ -2,10 +2,6 @@
 
 @section('content')
 
-<div class="pull-right">
-    <p><a class="btn btn-success btn-outline" href="{{ cachet_route('status-page') }}"><i class="ion ion-home"></i></a></p>
-</div>
-
 <div class="clearfix"></div>
 
 @include('partials.errors')
@@ -13,7 +9,6 @@
 <div class="row">
     <div class="col-xs-12 col-lg-offset-2 col-lg-8">
         <div class="text-center margin-bottom">
-            <h1>{{ $appName }} Notifications</h1>
             <p>Manage notifications for <strong>{{ $subscriber->email }}</strong></p>
         </div>
         <form action="{{ cachet_route('subscribe.manage', [$subscriber->verify_code], 'post') }}" method="post">
@@ -58,4 +53,8 @@
         </form>
     </div>
 </div>
+@stop
+
+@section('bottom-content')
+@include('partials.footer')
 @stop

@@ -11,17 +11,18 @@
         <strong>Summary</strong>
       </div>
       {!! $incident->formatted_message !!}
-      <br>
       @if(sizeof($incident->updates) == 0)
+      <hr />
       <strong>No Updates Reported</strong>
       @else
-      <strong>Updates</strong>
-      <hr>
+      <hr />
       <table class="table table-striped table-hover">
         <thead>
-          <th>Status</th>
-          <th>When</th>
-          <th>Update</th>
+          <tr>
+            <th scope="col" class="col-md-1">Status</th>
+            <th scope="col" class="col-md-2">When</th>
+            <th scope="col" class="col-md-9">Update</th>
+          </tr>
         </thead>
         <tbody>
           @foreach($incident->updates as $update)

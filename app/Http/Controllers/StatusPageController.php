@@ -142,6 +142,9 @@ class StatusPageController extends AbstractApiController
       $startDateInput = Binput::get('start_date');
       $endDateInput = Binput::get('end_date');
 
+      Log::debug("start date input: " . $startDateInput);
+      Log::debug("end date input: " . $endDateInput);
+
       $startDate = null;
       $endDate = null;
 
@@ -152,11 +155,11 @@ class StatusPageController extends AbstractApiController
       $previousDate = null;
       $nextDate = null;
 
-      if (isset($startDateInput)) {
+      if (isset($startDateInput) && !$startDateInput == "") {
         $startDate = Date::createFromFormat('Y-m-d', $startDateInput);
       }
 
-      if (isset($endDateInput)) {
+      if (isset($endDateInput) && !$endDateInput == "") {
         $endDate = Date::createFromFormat('Y-m-d', $endDateInput);
       }
 
@@ -168,43 +171,31 @@ class StatusPageController extends AbstractApiController
         $component = Component::where('name', $componentName)->first();
       }
 
-      if (isset($component)) {
-        if (isset($startDate) && isset($endDate)) {
-          $allIncidents = Incident::where('visible', '>=', (int) !Auth::check())
-            ->whereBetween('occurred_at', [
-              $endDate->format('Y-m-d').' 00:00:00',
-              $startDate->format('Y-m-d').' 23:59:59',
-            ])
-            ->where('component_id', $component->id)
-            ->orderBy('occurred_at', 'desc')->get()->groupBy(function (Incident $incident) {
-              return app(DateFactory::class)->make($incident->occurred_at)->toDateString();
-            });
-        } else {
-          $allIncidents = Incident::where('visible', '>=', (int) !Auth::check())
-            ->where('component_id', $component->id)
-            ->orderBy('occurred_at', 'desc')->get()->groupBy(function (Incident $incident) {
-              return app(DateFactory::class)->make($incident->occurred_at)->toDateString();
-            });
-        }
-      } else {
-        if (isset($startDate) && isset($endDate)) {
-          $allIncidents = Incident::where('visible', '>=', (int) !Auth::check())
-            ->whereBetween('occurred_at', [
-              $endDate->format('Y-m-d').' 00:00:00',
-              $startDate->format('Y-m-d').' 23:59:59',
-            ])
-            ->orderBy('occurred_at', 'desc')->get()->groupBy(function (Incident $incident) {
-              return app(DateFactory::class)->make($incident->occurred_at)->toDateString();
-          });
-        } else {
-          $allIncidents = Incident::where('visible', '>=', (int) !Auth::check())
-            ->orderBy('occurred_at', 'desc')->get()->groupBy(function (Incident $incident) {
-              return app(DateFactory::class)->make($incident->occurred_at)->toDateString();
-          });
-        }
+      $allIncidents = Incident::where('visible', '>=', (int) !Auth::check());
+
+      if (isset($startDate) && isset($endDate)) {
+        $allIncidents = $allIncidents->whereBetween('occurred_at', [
+          $endDate->format('Y-m-d') . ' 00:00:00',
+          $startDate->format('Y-m-d') . ' 23:59:59',
+        ]);
+      } elseif (isset($startDate)) {
+        $allIncidents = $allIncidents->where('occurred_at', '<=', $startDate->format('Y-m-d') . ' 23:59:59');
+      } elseif (isset($endDate)) {
+        $allIncidents = $allIncidents->where('occurred_at', '>=', $endDate->format('Y-m-d') . ' 00:00:00');
       }
 
-    // Get a list of components for the component drop down
+      if (isset($component)) {
+        $allIncidents = $allIncidents->where('component_id', $component->id);
+      }
+
+      $allIncidents = $allIncidents
+        ->orderBy('occurred_at', 'desc')
+        ->get()
+        ->groupBy(function (Incident $incident) {
+          return app(DateFactory::Class)->make($incident->occurred_at)->toDateString();
+        });
+
+      // Get a list of components for the component drop down
       $components = Component::where('enabled', 1)->orderBy('name')->get();
 
       return View::make('incidents')
@@ -215,7 +206,9 @@ class StatusPageController extends AbstractApiController
         ->withPreviousDate($previousDate)
         ->withNextDate($nextDate)
         ->withComponents($components)
-        ->withComponentName($componentName);
+        ->withComponentName($componentName)
+        ->withEndDate($endDate)
+        ->withStartDate($startDate);
     }
 
     /**

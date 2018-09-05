@@ -27,7 +27,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        @if($enableSubscribers && Request::is('/'))
+        @if($enableSubscribers)
         <li>
           <a class="btn btn-link" href="{{ cachet_route('subscribe') }}" shape="rect" title="Subscribe">{{ trans('cachet.subscriber.button') }}</a>
         </li>
