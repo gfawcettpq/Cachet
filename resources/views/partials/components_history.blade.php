@@ -13,7 +13,7 @@
           <tr>
             <th scope="col" class="col-md-5">Service</th>
             @foreach($dateColumnHeaders as $dateColumnHeader)
-            <th scope="col" class="col-md-1">{{ $dateColumnHeader }}</th>
+            <th scope="col" class="col-md-1 text-center">{{ $dateColumnHeader }}</th>
             @endforeach
           </tr>
         </thead>

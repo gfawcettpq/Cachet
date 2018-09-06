@@ -24,6 +24,7 @@ window.axios.defaults.headers.common = {
  * Flatpickr.
  */
 const Flatpickr = require('flatpickr');
+require('flatpickr/dist/themes/material_blue.css');
 
 ((win, doc) => {
     /**
@@ -52,7 +53,8 @@ const Flatpickr = require('flatpickr');
             Flatpickr('.flatpickr');
 
             Flatpickr('.flatpickr-time', {
-                enableTime: true
+              dateFormat: 'Y-m-d',
+              altInput: true
             });
         },
         components: {

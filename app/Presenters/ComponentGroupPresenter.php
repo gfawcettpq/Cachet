@@ -63,7 +63,7 @@ class ComponentGroupPresenter extends BasePresenter implements Arrayable
      */
     public function collapse_class()
     {
-        return $this->is_collapsed() ? 'ion-ios-plus-outline' : 'ion-ios-minus-outline';
+        return $this->is_collapsed() ? 'uxf-icon uxf-down-open-mini' : 'uxf-icon uxf-up-open-mini';
     }
 
     /**
@@ -118,6 +118,6 @@ class ComponentGroupPresenter extends BasePresenter implements Arrayable
      */
     public function collapse_class_with_subscriptions($subscriptions)
     {
-        return $this->has_subscriber($subscriptions) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline';
+        return $this->has_subscriber($subscriptions) ? 'uxf-icon uxf-down-open-mini' : 'uxf-icon uxf-down-open-mini';
     }
 }

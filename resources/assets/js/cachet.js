@@ -219,25 +219,25 @@ $(function () {
     $('.group-name').on('click', function () {
         var $this = $(this);
 
-        $this.find('.group-toggle').toggleClass('ion-ios-minus-outline').toggleClass('ion-ios-plus-outline');
+        $this.find('.group-toggle').toggleClass('uxf-down-open-mini').toggleClass('uxf-up-open-mini');
 
         $this.next('.group-items').toggleClass('hide');
     });
 
     $('.select-group').on('click', function () {
-        var $parentGroup = $(this).closest('ul.list-group');
+        var $parentGroup = $(this).closest('div.list-group');
         $parentGroup.find('input[type=checkbox]').prop('checked', true);
         $parentGroup.find('.group-items').removeClass('hide')
-        $parentGroup.find('.group-toggle').addClass('ion-ios-minus-outline').removeClass('ion-ios-plus-outline');
+        $parentGroup.find('.group-toggle').addClass('uxf-down-open-mini').removeClass('uxf-up-open-mini');
         event.stopPropagation();
         return false;
     });
 
     $('.deselect-group').on('click', function () {
-        var $parentGroup = $(this).closest('ul.list-group');
+        var $parentGroup = $(this).closest('div.list-group');
         $parentGroup.find('input[type=checkbox]').prop('checked', false);
         $parentGroup.find('.group-items').addClass('hide');
-        $parentGroup.find('.group-toggle').removeClass('ion-ios-minus-outline').addClass('ion-ios-plus-outline');
+        $parentGroup.find('.group-toggle').removeClass('uxf-down-open-mini').addClass('uxf-up-open-mini');
         event.stopPropagation();
         return false;
     });

@@ -1,6 +1,7 @@
 @extends('layout.master')
 
 @section('content')
+@include('partials.incident_filter', [$components])
 @include('partials.modules.timeline')
 @stop
 

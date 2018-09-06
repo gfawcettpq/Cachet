@@ -11,7 +11,7 @@
           {{ $component->name }}
         </label>
         @if($component->description)
-        <i class="ion ion-ios-help-outline help-icon" data-toggle="tooltip" data-title="{{ $component->description }}" data-container="body"></i>
+        <span class="uxf-icon uxf-help help-icon" data-toggle="tooltip" data-title="{{ $component->description }}" data-container="body"></span>
         @endif
     </div>
 </li>

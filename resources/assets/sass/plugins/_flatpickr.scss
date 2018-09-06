@@ -1,5 +1,6 @@
 /*! purgecss start ignore */
-@import "./node_modules/flatpickr/dist/flatpickr";
+//@import "./node_modules/flatpickr/dist/flatpickr";
+
 
 .flatpickr-calendar {
     width: auto;
@@ -59,5 +60,7 @@
 
 .flatpickr-time {
     text-align: left;
+    height: 34px;
+    line-height: 1.42857143;
 }
 /*! purgecss end ignore */

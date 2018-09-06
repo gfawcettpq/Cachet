@@ -1,7 +1,7 @@
 @import "palette";
 
 $ionicons-font-path: "../../../fonts" !default;
-@import "./node_modules/ionicons/scss/ionicons";
+@import "./node_modules/ionicons/dist/scss/ionicons";
 
 @import "modules/bootstrap";
 @import "plugins/flatpickr";

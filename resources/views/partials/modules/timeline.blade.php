@@ -1,5 +1,4 @@
 <div class="section-timeline">
-    @include('partials.incident_filter', [$components])
     @foreach($allIncidents as $date => $incidents)
     @include('partials.incidents2', [compact($date), compact($incidents)])
     @endforeach

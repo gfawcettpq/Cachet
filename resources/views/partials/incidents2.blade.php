@@ -1,16 +1,24 @@
-<h4>{{ formatted_date($date) }}</h4>
 @foreach($incidents as $incident)
 <ul class="list-group components">
   <li class="list-group-item group-name">
-    <span class="label label-default">{{ $incident->name }}</span>
-    <strong> {{ $incident->component->name }}</strong>
+    <span><strong>{{ $incident->component->name }}</strong></span>
+    <span class="pull-right">{{ formatted_date($date) }}</span>
   </li>
   <div class="group items">
     <div class="panel-body markdown-body">
-      <div>
-        <strong>Summary</strong>
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <strong>Summary</strong>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <span class="pull-right"><h6>{{ $incident->name }}</h6></span>
+        </div>
       </div>
-      {!! $incident->formatted_message !!}
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          {!! $incident->formatted_message !!}
+        </div>
+      </div>
       @if(sizeof($incident->updates) == 0)
       <hr />
       <strong>No Updates Reported</strong>

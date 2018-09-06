@@ -44,6 +44,8 @@
     <div class="content" id="app">
         @yield('content')
     </div>
+
+    @yield('bottom-content')
 </body>
 @yield('js')
 <script src="{{ mix('dist/js/all.js') }}"></script>
