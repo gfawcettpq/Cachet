@@ -36251,7 +36251,7 @@ var render = function() {
           ),
           _vm.metric.description
             ? _c("i", {
-                staticClass: "ion ion-ios-help-outline",
+                staticClass: "uxf-icon uxf-help",
                 attrs: {
                   "data-toggle": "tooltip",
                   "data-title": _vm.metric.description

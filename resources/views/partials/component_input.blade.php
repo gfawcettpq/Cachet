@@ -8,10 +8,10 @@
             @if (in_array($component->id, $subscriptions) || $subscriber->global)
                 checked="checked"
             @endif />
-          {{ $component->name }}
+          <strong>{{ $component->name }}</strong>
         </label>
         @if($component->description)
-        <span class="uxf-icon uxf-help help-icon" data-toggle="tooltip" data-title="{{ $component->description }}" data-container="body"></span>
+        &nbsp;[{{ $component->description }}]
         @endif
     </div>
 </li>

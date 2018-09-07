@@ -25,7 +25,7 @@
         <strong>{{ trans('cachet.components.group.other') }}</strong>
 
         <div class="pull-right">
-            <i class="ion ion-ios-circle-filled text-component-{{ $ungroupedComponents->max('status') }} {{ $ungroupedComponents->sortByDesc('status')->first()->status_color }}" data-toggle="tooltip" title="{{ $ungroupedComponents->sortByDesc('status')->first()->human_status }}"></i>
+            <i class="uxf-icon uxf-record text-component-{{ $ungroupedComponents->max('status') }} {{ $ungroupedComponents->sortByDesc('status')->first()->status_color }}" data-toggle="tooltip" title="{{ $ungroupedComponents->sortByDesc('status')->first()->human_status }}"></i>
         </div>
     </li>
 

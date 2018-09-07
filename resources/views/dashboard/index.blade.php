@@ -5,7 +5,7 @@
     <div>
         <div class="header">
             <div class="sidebar-toggler visible-xs">
-                <i class="ion ion-navicon"></i>
+                <i class="uxf-icon uxf-menu"></i>
             </div>
             <span class="uppercase">
                 <i class="ion ion-speedometer"></i> {{ trans('dashboard.dashboard') }}

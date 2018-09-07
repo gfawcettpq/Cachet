@@ -7,8 +7,9 @@
 @include('partials.modules.scheduled')
 @include('partials.modules.components')
 @include('partials.modules.history')
+@include('partials.legend')
 @stop
 
 @section('bottom-content')
-@include('partials.footer')
+@include('partials.footer2')
 @stop

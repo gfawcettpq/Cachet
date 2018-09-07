@@ -5,7 +5,7 @@
                 <strong>
                     {{metric.name}}
 
-                    <i class="ion ion-ios-help-outline" data-toggle="tooltip" :data-title="metric.description" v-if="metric.description"></i>
+                    <i class="uxf-icon uxf-help" data-toggle="tooltip" :data-title="metric.description" v-if="metric.description"></i>
                 </strong>
             </div>
             <div class="col-xs-2">

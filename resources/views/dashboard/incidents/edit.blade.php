@@ -3,7 +3,7 @@
 @section('content')
 <div class="header">
     <div class="sidebar-toggler visible-xs">
-        <i class="ion ion-navicon"></i>
+        <span class="uxf-icon uxf-menu"></span>
     </div>
     <span class="uppercase">
         <i class="ion ion-ios-information-outline"></i> {{ trans('dashboard.incidents.incidents') }}

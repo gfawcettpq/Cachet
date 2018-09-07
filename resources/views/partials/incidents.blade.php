@@ -42,7 +42,7 @@
                                         data-timeago="{{ $update->timestamp_iso }}">
                                     </abbr>
                                 </small>
-                                <span class="ion-ios-arrow-right pull-right"></span>
+                                <span class="uxf-icon uxf-right-open pull-right"></span>
 
                             </a>
                             @endforeach

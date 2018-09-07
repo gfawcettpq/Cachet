@@ -39,7 +39,7 @@
                             @if(!config('setting.always_authenticate', false))
                             <a class="btn btn-default btn-lg btn-trans" href="{{ cachet_route('status-page') }}">
                                 <span class="text-center">
-                                    <i class="ion ion-home"></i>
+                                    <i class="uxf-icon uxf-home"></i>
                                 </span>
                             </a>
                             @endif

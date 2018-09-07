@@ -9564,18 +9564,6 @@ body.error-page h3.font-bold {
   font-weight: 600;
 }
 
-.flatpickr-input {
-  text-align: left;
-  height: 34px;
-  line-height: 1.42857143;
-}
-
-.flatpickr-time {
-  text-align: left;
-  height: 34px;
-  line-height: 1.42857143;
-}
-
 @-webkit-keyframes swal2-show {
   0% {
     -webkit-transform: scale(0.7);
@@ -11650,13 +11638,17 @@ body.status-page footer {
   position: absolute;
   width: 100%;
   bottom: 0;
-  height: 60px;
+  height: 80px;
   padding: 30px 0 60px 0;
   border-top: 1px solid #e8e8e8;
   color: #999;
   font-size: 13px;
-  line-height: 30px;
+  line-height: 20px;
   text-align: center;
+}
+
+body.status-page footer .p {
+  color: #e6e6e6;
 }
 
 body.status-page footer .btn {

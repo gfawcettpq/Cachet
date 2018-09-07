@@ -1,15 +1,25 @@
 <li class="list-group-item {{ $component->group_id ? "sub-component" : "component" }}">
-    @if($component->link)
-    <a href="{{ $component->link }}" target="_blank" class="links">{{ $component->name }}</a>
-    @else
-    {{ $component->name }}
-    @endif
+    <div class="row">
+      @if($component->link)
+      <div class="col-xs-2">
+        {{ $component->name }}
+      </div>
+      <div class="col-xs-1">
+        <a href="{{ $component->link }}" class="btn btn-link" target="_blank">
+          <i class="uxf-icon uxf-popup">
+          </i>
+        </a>
+      </div>
+      @else
+      <div class="col-xs-3">
+        {{ $component->name }}
+      </div>
+      @endif
 
-    @if($component->description)
-    <i class="ion ion-ios-help-outline help-icon" data-toggle="tooltip" data-title="{{ $component->description }}" data-container="body"></i>
-    @endif
-
-    <div class="pull-right">
+    <div class="col-xs-9">
+      <span class="pull-right">
         <small class="text-component-{{ $component->status }} {{ $component->status_color }}" data-toggle="tooltip" title="{{ trans('cachet.components.last_updated', ['timestamp' => $component->updated_at_formatted]) }}">{{ $component->human_status }}</small>
+      </span>
+    </div>
     </div>
 </li>

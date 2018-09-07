@@ -227,17 +227,16 @@ $(function () {
     $('.select-group').on('click', function () {
         var $parentGroup = $(this).closest('div.list-group');
         $parentGroup.find('input[type=checkbox]').prop('checked', true);
-        $parentGroup.find('.group-items').removeClass('hide')
-        $parentGroup.find('.group-toggle').addClass('uxf-down-open-mini').removeClass('uxf-up-open-mini');
-        event.stopPropagation();
+        //$parentGroup.find('.group-items').removeClass('hide')
+        //event.stopPropagation();
         return false;
     });
 
     $('.deselect-group').on('click', function () {
         var $parentGroup = $(this).closest('div.list-group');
         $parentGroup.find('input[type=checkbox]').prop('checked', false);
-        $parentGroup.find('.group-items').addClass('hide');
-        $parentGroup.find('.group-toggle').removeClass('uxf-down-open-mini').addClass('uxf-up-open-mini');
+        //$parentGroup.find('.group-items').addClass('hide');
+        //$parentGroup.find('.group-toggle').removeClass('uxf-down-open-mini').addClass('uxf-up-open-mini');
         event.stopPropagation();
         return false;
     });

@@ -1,6 +1,6 @@
 <div class="sub-sidebar">
     <div class="sidebar-toggler visible-xs">
-        <i class="ion ion-navicon"></i>
+        <i class="uxf-icon uxf-menu"></i>
     </div>
     <h3>{{ $subTitle }}</h3>
     <hr>
